@@ -2542,14 +2542,6 @@ validate-npm-package-license@^3.0.4:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vee-validate@^4.11.6:
-  version "4.11.6"
-  resolved "https://registry.npmjs.org/vee-validate/-/vee-validate-4.11.6.tgz"
-  integrity sha512-DwmNRqYVwX/CrH2ai8RRE1Y0ETmMFkS6X+8JxzC9rmE5cMqBxMiHRiqRABRvtJAbgHFG7LeSzVkPcr/mG5BiSQ==
-  dependencies:
-    "@vue/devtools-api" "^6.5.0"
-    type-fest "^4.2.0"
-
 vite-node@0.34.6:
   version "0.34.6"
   resolved "https://registry.npmjs.org/vite-node/-/vite-node-0.34.6.tgz"
