@@ -31,12 +31,13 @@
 
 html {
   height: -webkit-fill-available;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body {
   height: -webkit-fill-available;
   color: var(--color-text);
-  overflow: hidden;
   background: var(--color-background);
   transition:
     color 0.5s,
