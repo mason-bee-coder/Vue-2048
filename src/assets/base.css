@@ -29,7 +29,12 @@
   font-weight: normal;
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
+  height: -webkit-fill-available;
   color: var(--color-text);
   background: var(--color-background);
   transition:
