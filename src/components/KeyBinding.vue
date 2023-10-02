@@ -24,8 +24,9 @@ onSwipeLeft(
 )
 
 onSwipeRight(
-  preventEndGameAction(() => {
+  preventEndGameAction((e: any) => {
     blockStore.move(Direction.RIGHT)
+    e.preventDefault()
   })
 )
 

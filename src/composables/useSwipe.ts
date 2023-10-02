@@ -31,7 +31,6 @@ export const useSwipe = (
         touchEndX.value = event.changedTouches[0].screenX
         touchEndY.value = event.changedTouches[0].screenY
         handleGesture(event)
-        event.preventDefault()
       },
       false
     )
