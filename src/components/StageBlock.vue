@@ -65,6 +65,7 @@ const blocksWithPosition: ComputedRef<Array<Block & { top: string; left: string 
 .stage-wrapper
   width: 100%
   height: 100%
+  user-select: none
 
 .block-item
   // animation: appear 200ms ease 100ms

@@ -6,6 +6,7 @@ import ScoreAreaVue from './ScoreArea.vue'
 import { useReset } from '@/composables/useReset'
 import { onMounted } from 'vue'
 import useBlockStore from '@/stores/block'
+import FooterComp from './FooterComp.vue'
 
 const blockStore = useBlockStore()
 const { reset } = useReset()
@@ -34,6 +35,8 @@ onMounted(() => {
       <EndGame />
     </div>
   </div>
+
+  <FooterComp v-once />
 </template>
 
 <style scoped lang="sass">
@@ -42,6 +45,7 @@ onMounted(() => {
   display: flex
   flex-direction: column
   align-items: center
+  padding: 2rem 1.5rem
 
 .header-wrapper
   width: 100%

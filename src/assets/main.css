@@ -3,9 +3,12 @@
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
 
   font-weight: normal;
+  height: 100vmax;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .button-common {
