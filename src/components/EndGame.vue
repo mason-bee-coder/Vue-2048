@@ -1,15 +1,24 @@
 <script setup lang="ts">
 import { useReset } from '@/composables/useReset'
 import useBlockStore from '@/stores/block'
+import useScoreStore from '@/stores/score'
 
 const blockStore = useBlockStore()
+const scoreStore = useScoreStore()
 const { reset } = useReset()
+
+const onReset = () => {
+  window.gtag?.('event', 'Replay', {
+    score: scoreStore.score
+  })
+  reset()
+}
 </script>
 
 <template>
   <div class="end-game" :class="blockStore.isEndGame ? 'show' : ''">
     <h4 class="title">Game over!</h4>
-    <button class="button-common" @click="reset">Replay</button>
+    <button class="button-common" @click="onReset">Replay</button>
   </div>
 </template>
 

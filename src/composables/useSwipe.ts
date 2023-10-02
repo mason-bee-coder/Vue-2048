@@ -6,7 +6,7 @@ export type SwipeOptions = {
 export const useSwipe = (
   touchableElement: HTMLElement | null = null,
   options = ref({
-    directinoal_threshold: 80
+    directinoal_threshold: 40
   })
 ) => {
   const touchStartX = shallowRef(0)
@@ -31,6 +31,7 @@ export const useSwipe = (
         touchEndX.value = event.changedTouches[0].screenX
         touchEndY.value = event.changedTouches[0].screenY
         handleGesture(event)
+        event.preventDefault()
       },
       false
     )

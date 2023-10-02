@@ -11,6 +11,11 @@ import FooterComp from './FooterComp.vue'
 const blockStore = useBlockStore()
 const { reset } = useReset()
 
+const playNewGame = () => {
+  window.gtag?.('event', 'NewGame')
+  reset()
+}
+
 onMounted(() => {
   blockStore.init()
 })
@@ -25,7 +30,7 @@ onMounted(() => {
       </div>
 
       <div class="new-game-wrapper">
-        <button class="button-common" @click="reset">New Game</button>
+        <button class="button-common" @click="playNewGame">New Game</button>
       </div>
     </div>
 
