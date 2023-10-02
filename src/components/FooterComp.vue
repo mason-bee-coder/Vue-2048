@@ -11,6 +11,7 @@
 <style lang="sass">
 footer
   text-align: center
+  user-select: none
 
 .clone
   background-color: #4c4c4c

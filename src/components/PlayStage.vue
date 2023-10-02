@@ -78,6 +78,7 @@ onMounted(() => {
   position: relative
   display: inline-block
   margin-top: 5rem
+  user-select: none
 
   &:deep(.stage-wrapper)
     z-index: 10
