@@ -5,7 +5,8 @@
   margin: 0 auto;
 
   font-weight: normal;
-  height: 100vmax;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
