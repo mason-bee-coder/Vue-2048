@@ -39,6 +39,7 @@ body {
   height: -webkit-fill-available;
   color: var(--color-text);
   background: var(--color-background);
+  touch-action: none;
   transition:
     color 0.5s,
     background-color 0.5s;

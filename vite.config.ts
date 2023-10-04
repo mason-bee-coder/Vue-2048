@@ -21,7 +21,7 @@ export default defineConfig({
         name: 'Bee 2048',
         short_name: '2048',
         description: 'Bee clone 2048 game',
-        theme_color: '#ffffff',
+        theme_color: '#000',
         icons: [
           {
             src: 'pwa-192x192.png',
