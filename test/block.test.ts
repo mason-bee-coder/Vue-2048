@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, test, vi } from 'vitest'
 // import useBlockStore from '../src/stores/block'
 import useBlockStore from '@/stores/block'
 import { getPairXYKey } from '@/models/grid'
-import { createApp } from 'vue'
+import { createApp, nextTick } from 'vue'
 import { createPinia, setActivePinia } from 'pinia'
 import { Block } from '@/models/block'
 import { forEach, isEqual, pick } from 'lodash'
@@ -88,7 +88,7 @@ describe('Move Block', () => {
     [0, 0, 0, 2]
   ]
 
-  it.skip('Should move block to top', () => {
+  it('Should move block to top', () => {
     const expectResult = [
       [0, 2, 2, 2],
       [0, 0, 0, 0],
@@ -104,7 +104,7 @@ describe('Move Block', () => {
     expect(isEqual(expectResult, to2DArray)).equal(true)
   })
 
-  it.skip('Should move block to left', () => {
+  it('Should move block to left', () => {
     const expectResult = [
       [0, 0, 0, 0],
       [2, 0, 0, 0],
@@ -121,7 +121,7 @@ describe('Move Block', () => {
     expect(isEqual(expectResult, to2DArray)).equal(true)
   })
 
-  it.skip('Should move block to right', () => {
+  it('Should move block to right', () => {
     const expectResult = [
       [0, 0, 0, 0],
       [0, 0, 0, 2],
@@ -138,7 +138,7 @@ describe('Move Block', () => {
     expect(isEqual(expectResult, to2DArray)).equal(true)
   })
 
-  it.skip('Should move block to down', () => {
+  it('Should move block to down', () => {
     const expectResult = [
       [0, 0, 0, 0],
       [0, 0, 0, 0],
@@ -180,25 +180,44 @@ describe('Move Block', () => {
 })
 
 describe('Check end game', () => {
-    let blockStore: ReturnType<typeof useBlockStore>
-    beforeEach(() => {
-      const pinia = createPinia()
-      app.use(pinia)
-      setActivePinia(pinia)
-      blockStore = useBlockStore()
-    })
+  let blockStore: ReturnType<typeof useBlockStore>
+  beforeEach(() => {
+    const pinia = createPinia()
+    app.use(pinia)
+    setActivePinia(pinia)
+    blockStore = useBlockStore()
+  })
 
-    const array2D = [
+  const array2D = [
+    [64, 32, 2, 16],
+    [128, 64, 16, 8],
+    [4, 16, 8, 4],
+    [2, 8, 2, 2]
+  ]
+
+  it('Should check endGame to false', () => {
+    blockStore.blocks = convert2DToBlockArray(array2D)
+    blockStore.checkEndGame()
+    expect(blockStore.isEndGame).equal(false)
+  })
+
+  it('Should not endGame if user move wrong direction', () => {
+    blockStore.blocks = convert2DToBlockArray(array2D)
+    blockStore.move(Direction.UP)
+    expect(blockStore.isEndGame).equal(false)
+  })
+
+  it('Should endGame if randomblock and got no direction to continue play', async () => {
+    const array2DWithAnEmptyPosition = [
       [64, 32, 2, 16],
-      [128, 64, 16, 8],
-      [4, 16, 8, 4],
-      [2, 8, 2, 2],
+      [128, 8, 128, 0],
+      [4, 16, 8, 128],
+      [2, 8, 4, 2]
     ]
 
-    it('Should check endGame to false', () => {
-      blockStore.blocks = convert2DToBlockArray(array2D)
-      // blockStore.move(Direction.UP);
-      blockStore.checkEndGame();
-      expect(blockStore.isEndGame).equal(false);
-    })
+    blockStore.blocks = convert2DToBlockArray(array2DWithAnEmptyPosition)
+    blockStore.move(Direction.LEFT)
+    console.log(convertArrayBlockTo2D(blockStore.blocks))
+    expect(blockStore.isEndGame).equal(true)
+  })
 })

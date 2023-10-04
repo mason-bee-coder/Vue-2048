@@ -98,7 +98,7 @@ const useBlockStore = defineStore('blocks', () => {
   }
 
   const randomBlock = () => {
-    if (isEndGame.value) {
+    if (isEndGame.value || !emptyPairs.value.length) {
       return
     }
 
@@ -167,8 +167,8 @@ const useBlockStore = defineStore('blocks', () => {
       blocks.value = newBlocks
     } finally {
       // We always check end game
-      checkEndGame()
       randomBlock()
+      checkEndGame()
     }
   }
 
