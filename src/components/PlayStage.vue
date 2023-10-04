@@ -72,7 +72,7 @@ onMounted(() => {
   justify-content: flex-end
 
   button
-    margin: 1rem 1rem 0 0
+    margin-top: 1rem
 
 .play-area
   position: relative
