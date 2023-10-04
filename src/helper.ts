@@ -8,8 +8,8 @@ export const detectPairInGrid = <T extends Block>(arr: Array<T>) => {
 
   const pairs = []
 
-  for (let i = 0; i < l - 1; i++) {
-    for (let u = i + 1; u < l - 1; u++) {
+  for (let i = 0; i < l; i++) {
+    for (let u = i + 1; u < l; u++) {
       const current = arr[i]
       const next = arr[u]
 

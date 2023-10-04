@@ -70,7 +70,7 @@ describe('Convert between Block 2D And Array', () => {
   })
 })
 
-describe.only('Move Block', () => {
+describe('Move Block', () => {
   let blockStore: ReturnType<typeof useBlockStore>
   beforeEach(() => {
     const pinia = createPinia()
@@ -177,4 +177,28 @@ describe.only('Move Block', () => {
       expect(success).equal(true)
     })
   })
+})
+
+describe('Check end game', () => {
+    let blockStore: ReturnType<typeof useBlockStore>
+    beforeEach(() => {
+      const pinia = createPinia()
+      app.use(pinia)
+      setActivePinia(pinia)
+      blockStore = useBlockStore()
+    })
+
+    const array2D = [
+      [64, 32, 2, 16],
+      [128, 64, 16, 8],
+      [4, 16, 8, 4],
+      [2, 8, 2, 2],
+    ]
+
+    it('Should check endGame to false', () => {
+      blockStore.blocks = convert2DToBlockArray(array2D)
+      // blockStore.move(Direction.UP);
+      blockStore.checkEndGame();
+      expect(blockStore.isEndGame).equal(false);
+    })
 })

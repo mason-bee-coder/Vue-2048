@@ -186,7 +186,7 @@ const useBlockStore = defineStore('blocks', () => {
     blocks.value = []
   }
 
-  return { init, blockList, isEndGame, move, randomBlock, emptyPairs, blocks, $reset }
+  return { init, blockList, isEndGame, checkEndGame, move, randomBlock, emptyPairs, blocks, $reset }
 })
 
 export default useBlockStore
