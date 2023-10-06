@@ -1,3 +1,4 @@
+import { throttle } from 'lodash'
 import { onMounted, ref, shallowRef } from 'vue'
 export type SwipeCallback = (event: TouchEvent) => void
 export type SwipeOptions = {
@@ -84,10 +85,13 @@ export const useSwipe = (
     }
   }
   return {
-    onSwipeLeft: (callback: SwipeCallback) => addEventListener(onSwipeLeft, callback),
-    onSwipeRight: (callback: SwipeCallback) => addEventListener(onSwipeRight, callback),
-    onSwipeUp: (callback: SwipeCallback) => addEventListener(onSwipeUp, callback),
-    onSwipeDown: (callback: SwipeCallback) => addEventListener(onSwipeDown, callback),
-    onTap: (callback: SwipeCallback) => addEventListener(onTap, callback)
+    onSwipeLeft: (callback: SwipeCallback) =>
+      addEventListener(onSwipeLeft, throttle(callback, 300)),
+    onSwipeRight: (callback: SwipeCallback) =>
+      addEventListener(onSwipeRight, throttle(callback, 300)),
+    onSwipeUp: (callback: SwipeCallback) => addEventListener(onSwipeUp, throttle(callback, 300)),
+    onSwipeDown: (callback: SwipeCallback) =>
+      addEventListener(onSwipeDown, throttle(callback, 300)),
+    onTap: (callback: SwipeCallback) => addEventListener(onTap, throttle(callback, 300))
   }
 }
